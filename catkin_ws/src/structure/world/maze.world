@@ -1,0 +1,322 @@
+<?xml version="1.0"?>
+<sdf version="1.5">
+<world name="default">
+<!-- Sun and ground plane -->
+<scene>
+  <ambient>0.4 0.4 0.4 1</ambient>
+  <background>0.25 0.25 0.25 1</background>
+  <shadows>false</shadows>
+</scene>
+<light type="directional" name="some_light">
+  <diffuse>0.7 0.7 0.7 0</diffuse>
+  <specular>1 1 1 0</specular>
+  <direction>-1 -1 -1</direction>
+</light>
+<include >
+<!-- <uri>
+model://sun
+</uri> -->
+</include>
+<include>
+<uri>
+model://ground_plane
+</uri>
+</include>
+
+<!-- Initial camera position -->
+<gui fullscreen='0'>
+<camera name='world_camera'>
+  <pose>-4 -4 4 0.000000 1 -4</pose> 
+  <view_controller>orbit</view_controller>
+</camera>
+</gui>
+
+
+<!--  -->
+<!-- Walls -->
+<model name="v1">
+    <pose>0 10.5 0 0 0 0</pose>
+    <static>true</static>
+    <link name="link">
+      <inertial>
+        <mass>500.0</mass>
+        <inertia> <!-- inertias are tricky to compute -->
+          <!-- http://gazebosim.org/tutorials?tut=inertia&cat=build_robot -->
+          <ixx>0.51875</ixx>       <!-- for a box: ixx = 0.083 * mass * (y*y + z*z) -->
+          <ixy>0.0</ixy>         <!-- for a box: ixy = 0 -->
+          <ixz>0.0</ixz>         <!-- for a box: ixz = 0 -->
+          <iyy>0.083</iyy>       <!-- for a box: iyy = 0.083 * mass * (x*x + z*z) -->
+          <iyz>0.0</iyz>         <!-- for a box: iyz = 0 -->
+          <izz>0.083</izz>       <!-- for a box: izz = 0.083 * mass * (x*x + y*y) -->
+        </inertia>
+      </inertial>
+      <collision name="collision">
+        <geometry>
+          <box>
+            <size>20 1 8</size>
+          </box>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <box>
+            <size>20 1 5</size>
+          </box>
+        </geometry>
+        <material>
+          <!-- Texture -->
+          <script>
+            <uri>file://media/material/scripts/gazebo.material</uri>
+            <name>Gazebo/Bricks</name>
+          </script>
+        </material>
+      </visual>
+    </link>
+</model>
+
+<model name="v2">
+  <pose>0 -10.5 0 0 0 0</pose>
+  <static>true</static>
+  <link name="link">
+    <inertial>
+      <mass>500.0</mass>
+      <inertia> <!-- inertias are tricky to compute -->
+        <!-- http://gazebosim.org/tutorials?tut=inertia&cat=build_robot -->
+        <ixx>0.51875</ixx>       <!-- for a box: ixx = 0.083 * mass * (y*y + z*z) -->
+        <ixy>0.0</ixy>         <!-- for a box: ixy = 0 -->
+        <ixz>0.0</ixz>         <!-- for a box: ixz = 0 -->
+        <iyy>0.083</iyy>       <!-- for a box: iyy = 0.083 * mass * (x*x + z*z) -->
+        <iyz>0.0</iyz>         <!-- for a box: iyz = 0 -->
+        <izz>0.083</izz>       <!-- for a box: izz = 0.083 * mass * (x*x + y*y) -->
+      </inertia>
+    </inertial>
+    <collision name="collision">
+      <geometry>
+        <box>
+          <size>20 1 8</size>
+        </box>
+      </geometry>
+    </collision>
+    <visual name="visual">
+      <geometry>
+        <box>
+          <size>20 1 5</size>
+        </box>
+      </geometry>
+      <material>
+        <!-- Texture -->
+        <script>
+          <uri>file://media/material/scripts/gazebo.material</uri>
+          <name>Gazebo/Bricks</name>
+        </script>
+      </material>
+    </visual>
+  </link>
+</model>
+
+
+<model name="h1">
+  <pose>10.5 0 0 0 0 1.5708</pose>
+  <static>true</static>
+  <link name="link">
+    <inertial>
+      <mass>500.0</mass>
+      <inertia> <!-- inertias are tricky to compute -->
+        <!-- http://gazebosim.org/tutorials?tut=inertia&cat=build_robot -->
+        <ixx>0.51875</ixx>       <!-- for a box: ixx = 0.083 * mass * (y*y + z*z) -->
+        <ixy>0.0</ixy>         <!-- for a box: ixy = 0 -->
+        <ixz>0.0</ixz>         <!-- for a box: ixz = 0 -->
+        <iyy>0.083</iyy>       <!-- for a box: iyy = 0.083 * mass * (x*x + z*z) -->
+        <iyz>0.0</iyz>         <!-- for a box: iyz = 0 -->
+        <izz>0.083</izz>       <!-- for a box: izz = 0.083 * mass * (x*x + y*y) -->
+      </inertia>
+    </inertial>
+    <collision name="collision">
+      <geometry>
+        <box>
+          <size>22 1 8</size>
+        </box>
+      </geometry>
+    </collision>
+    <visual name="visual">
+      <geometry>
+        <box>
+          <size>22 1 5</size>
+        </box>
+      </geometry>
+      <material>
+        <!-- Texture -->
+        <script>
+          <uri>file://media/material/scripts/gazebo.material</uri>
+          <name>Gazebo/Bricks</name>
+        </script>
+      </material>
+    </visual>
+  </link>
+</model>
+
+<model name="h2">
+  <pose>-10.5 0 0 0 0 1.5708</pose>
+  <static>true</static>
+  <link name="link">
+    <inertial>
+      <mass>500.0</mass>
+      <inertia> <!-- inertias are tricky to compute -->
+        <!-- http://gazebosim.org/tutorials?tut=inertia&cat=build_robot -->
+        <ixx>0.51875</ixx>       <!-- for a box: ixx = 0.083 * mass * (y*y + z*z) -->
+        <ixy>0.0</ixy>         <!-- for a box: ixy = 0 -->
+        <ixz>0.0</ixz>         <!-- for a box: ixz = 0 -->
+        <iyy>0.083</iyy>       <!-- for a box: iyy = 0.083 * mass * (x*x + z*z) -->
+        <iyz>0.0</iyz>         <!-- for a box: iyz = 0 -->
+        <izz>0.083</izz>       <!-- for a box: izz = 0.083 * mass * (x*x + y*y) -->
+      </inertia>
+    </inertial>
+    <collision name="collision">
+      <geometry>
+        <box>
+          <size>22 1 8</size>
+        </box>
+      </geometry>
+    </collision>
+    <visual name="visual">
+      <geometry>
+        <box>
+          <size>22 1 5</size>
+        </box>
+      </geometry>
+      <material>
+        <!-- Texture -->
+        <script>
+          <uri>file://media/material/scripts/gazebo.material</uri>
+          <name>Gazebo/Bricks</name>
+        </script>
+      </material>
+    </visual>
+  </link>
+</model>
+
+
+
+<model name="obj1">
+  <pose>-2 -9 0 0 0 1.5708</pose>
+  <static>true</static>
+  <link name="link">
+    <inertial>
+      <mass>500.0</mass>
+      <inertia> <!-- inertias are tricky to compute -->
+        <!-- http://gazebosim.org/tutorials?tut=inertia&cat=build_robot -->
+        <ixx>0.51875</ixx>       <!-- for a box: ixx = 0.083 * mass * (y*y + z*z) -->
+        <ixy>0.0</ixy>         <!-- for a box: ixy = 0 -->
+        <ixz>0.0</ixz>         <!-- for a box: ixz = 0 -->
+        <iyy>0.083</iyy>       <!-- for a box: iyy = 0.083 * mass * (x*x + z*z) -->
+        <iyz>0.0</iyz>         <!-- for a box: iyz = 0 -->
+        <izz>0.083</izz>       <!-- for a box: izz = 0.083 * mass * (x*x + y*y) -->
+      </inertia>
+    </inertial>
+    <collision name="collision">
+      <geometry>
+        <box>
+          <size>2 0.1 8</size>
+        </box>
+      </geometry>
+    </collision>
+    <visual name="visual">
+      <geometry>
+        <box>
+          <size>2 0.1 8</size>
+        </box>
+      </geometry>
+      <material>
+        <!-- Texture -->
+        <script>
+          <uri>file://media/material/scripts/gazebo.material</uri>
+          <name>Gazebo/Bricks</name>
+        </script>
+      </material>
+    </visual>
+  </link>
+</model>
+
+<model name="obj2">
+  <pose>9 0 0 0 0 0</pose>
+  <static>true</static>
+  <link name="link">
+    <inertial>
+      <mass>500.0</mass>
+      <inertia> <!-- inertias are tricky to compute -->
+        <!-- http://gazebosim.org/tutorials?tut=inertia&cat=build_robot -->
+        <ixx>0.51875</ixx>       <!-- for a box: ixx = 0.083 * mass * (y*y + z*z) -->
+        <ixy>0.0</ixy>         <!-- for a box: ixy = 0 -->
+        <ixz>0.0</ixz>         <!-- for a box: ixz = 0 -->
+        <iyy>0.083</iyy>       <!-- for a box: iyy = 0.083 * mass * (x*x + z*z) -->
+        <iyz>0.0</iyz>         <!-- for a box: iyz = 0 -->
+        <izz>0.083</izz>       <!-- for a box: izz = 0.083 * mass * (x*x + y*y) -->
+      </inertia>
+    </inertial>
+    <collision name="collision">
+      <geometry>
+        <box>
+          <size>2 1 8</size>
+        </box>
+      </geometry>
+    </collision>
+    <visual name="visual">
+      <geometry>
+        <box>
+          <size>2 1 8</size>
+        </box>
+      </geometry>
+      <material>
+        <!-- Texture -->
+        <script>
+          <uri>file://media/material/scripts/gazebo.material</uri>
+          <name>Gazebo/Bricks</name>
+        </script>
+      </material>
+    </visual>
+  </link>
+</model>
+
+<model name="obj3">
+  <pose>-4 4 0 0 0 0</pose>
+  <static>true</static>
+  <link name="link">
+    <inertial>
+      <mass>500.0</mass>
+      <inertia> <!-- inertias are tricky to compute -->
+        <!-- http://gazebosim.org/tutorials?tut=inertia&cat=build_robot -->
+        <ixx>0.51875</ixx>       <!-- for a box: ixx = 0.083 * mass * (y*y + z*z) -->
+        <ixy>0.0</ixy>         <!-- for a box: ixy = 0 -->
+        <ixz>0.0</ixz>         <!-- for a box: ixz = 0 -->
+        <iyy>0.083</iyy>       <!-- for a box: iyy = 0.083 * mass * (x*x + z*z) -->
+        <iyz>0.0</iyz>         <!-- for a box: iyz = 0 -->
+        <izz>0.083</izz>       <!-- for a box: izz = 0.083 * mass * (x*x + y*y) -->
+      </inertia>
+    </inertial>
+    <collision name="collision">
+      <geometry>
+        <box>
+          <size>2 2 8</size>
+        </box>
+      </geometry>
+    </collision>
+    <visual name="visual">
+      <geometry>
+        <box>
+          <size>2 2 8</size>
+        </box>
+      </geometry>
+      <material>
+        <!-- Texture -->
+        <script>
+          <uri>file://media/material/scripts/gazebo.material</uri>
+          <name>Gazebo/Bricks</name>
+        </script>
+      </material>
+    </visual>
+  </link>
+</model>
+
+
+</world>
+</sdf>
